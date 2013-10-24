@@ -39,54 +39,54 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetOpenAuth">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\DotNetOpenAuth.Ultimate.4.3.3.13295\lib\net45-full\DotNetOpenAuth.dll</HintPath>
+      <HintPath>..\..\packages\DotNetOpenAuth.Ultimate.4.3.3.13295\lib\net45-full\DotNetOpenAuth.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\ServiceStack.3.9.69\lib\net35\ServiceStack.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.3.9.69\lib\net35\ServiceStack.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Authentication.OpenId">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\ServiceStack.Authentication.OpenId.3.9.69\lib\net35\ServiceStack.Authentication.OpenId.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Authentication.OpenId.3.9.69\lib\net35\ServiceStack.Authentication.OpenId.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Common">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\ServiceStack.Common.3.9.69\lib\net35\ServiceStack.Common.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.69\lib\net35\ServiceStack.Common.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Interfaces">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\ServiceStack.Common.3.9.69\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Common.3.9.69\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.OrmLite">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\ServiceStack.OrmLite.SqlServer.3.9.69\lib\net35\ServiceStack.OrmLite.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.9.69\lib\net35\ServiceStack.OrmLite.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.OrmLite.SqlServer">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\ServiceStack.OrmLite.SqlServer.3.9.69\lib\net35\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.9.69\lib\net35\ServiceStack.OrmLite.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Redis">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\ServiceStack.Redis.3.9.69\lib\net35\ServiceStack.Redis.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Redis.3.9.69\lib\net35\ServiceStack.Redis.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.ServiceInterface">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\ServiceStack.3.9.69\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.3.9.69\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Text">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\ServiceStack.Text.3.9.69\lib\net35\ServiceStack.Text.dll</HintPath>
+      <HintPath>..\..\packages\ServiceStack.Text.3.9.69\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="Simple.Data">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\Simple.Data.Core.0.18.3.1\lib\net40\Simple.Data.dll</HintPath>
+      <HintPath>..\..\packages\Simple.Data.Core.0.18.3.1\lib\net40\Simple.Data.dll</HintPath>
     </Reference>
     <Reference Include="Simple.Data.Ado">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\Simple.Data.Ado.0.18.3.1\lib\net40\Simple.Data.Ado.dll</HintPath>
+      <HintPath>..\..\packages\Simple.Data.Ado.0.18.3.1\lib\net40\Simple.Data.Ado.dll</HintPath>
     </Reference>
     <Reference Include="Simple.Data.Sqlite">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\Simple.Data.Sqlite.0.18.3.1\lib\net40\Simple.Data.Sqlite.dll</HintPath>
+      <HintPath>..\..\packages\Simple.Data.Sqlite.0.18.3.1\lib\net40\Simple.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.SQLite">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\System.Data.SQLite.1.0.88.0\lib\net45\System.Data.SQLite.dll</HintPath>
+      <HintPath>..\..\packages\System.Data.SQLite.1.0.88.0\lib\net45\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.SQLite.Linq">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\System.Data.SQLite.1.0.88.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+      <HintPath>..\..\packages\System.Data.SQLite.1.0.88.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -105,7 +105,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="WebActivator">
-      <HintPath>..\..\..\..\users\bgearon\documents\visual studio 2013\Projects\BAG.Menu\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+      <HintPath>..\..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
