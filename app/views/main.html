@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-sm-4">
+        <h4>pick the date</h4>
+    </div>
+    <div class="col-sm-8">
+        <form class="form" role="form">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-danger" ng-click="incrementDate(menu.date, -7)">
+                        <i class="glyphicon glyphicon-chevron-left"></i> previous
+                    </button>
+                </div>
+                <input class="form-control" type="text" datepicker-popup="MM/dd/yyyy" ng-model="menu.date"
+                       is-open="opened" ng-required="true" placeholder="pick the date">
+
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-danger" ng-click="incrementDate(menu.date, 7)">
+                        next <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr/>
+
+<div class="media" ng-repeat="meal in meals">
+    <a class="pull-left" href="#">
+        <img ph-img="80x60"/>
+    </a>
+
+    <div class="media-body">
+        <a href="#" editable-text="meal.name">{{ meal.date + ' ' + meal.name || 'enter the title' }}</a>
+        <span class="media-url">
+            <button class="btn btn-link" editable-url="meal.url">{{ meal.url || 'the url' }}</button>
+            <a ng-href="{{meal.url}}" ng-show="meal.url"><i class="glyphicon glyphicon-link"></i></a>
+        </span>
+
+        <div rating value="meal.rating" max="max" readonly="isReadonly"
+             on-hover="hoveringOver(value)" on-leave="overStar = null"></div>
+
+        <span class="badge"
+              ng-class="{'badge-warning': percent<30, 'badge-info': percent>=30 && percent<70, 'badge-success': percent>=70}"
+              ng-show="overStar && !isReadonly">{{percent}}%</span>
+    </div>
+</div>
