@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 
   try {
     yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
-  } catch (e) {}
+  } catch (e) { }
 
   grunt.initConfig({
     yeoman: yeomanConfig,
