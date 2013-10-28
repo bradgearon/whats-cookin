@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BAG.Menu.Core</RootNamespace>
     <AssemblyName>BAG.Menu.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +37,9 @@
     <Reference Include="ServiceStack.Interfaces">
       <HintPath>..\..\packages\ServiceStack.Common.3.9.69\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\..\packages\ServiceStack.OrmLite.Sqlite64.3.9.69\lib\net35\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Text">
       <HintPath>..\..\packages\ServiceStack.Text.3.9.69\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
@@ -48,7 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Embed.cs" />
     <Compile Include="Interface\IDatabaseProvider.cs" />
+    <Compile Include="Interface\IEmbedlyClient.cs" />
+    <Compile Include="Meal.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service.cs" />
   </ItemGroup>

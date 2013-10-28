@@ -1,5 +1,6 @@
 'use strict';
 
+var services = angular.module(['menuApp.services'], ['menuApp.services.embed','menuApp.services.menu']);
 var mod = angular.module(['menuApp'], ['placeholders.img', 'ui.bootstrap', 'xeditable', 'menuApp.services']);
 
 mod.config(['$routeProvider', '$locationProvider',

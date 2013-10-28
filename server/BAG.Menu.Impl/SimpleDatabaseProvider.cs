@@ -12,7 +12,7 @@ namespace BAG.Menu.Impl
   {
     public SimpleDatabaseProvider(string connectionString)
     {
-      Db = Database.OpenConnection(connectionString);
+      Db = Database.OpenFile(connectionString);
     }
 
     public dynamic Db { get; protected set; }

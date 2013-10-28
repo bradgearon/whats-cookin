@@ -13,12 +13,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BAG.Menu</RootNamespace>
     <AssemblyName>BAG.Menu</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,8 +39,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetOpenAuth">
       <HintPath>..\..\packages\DotNetOpenAuth.Ultimate.4.3.3.13295\lib\net45-full\DotNetOpenAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Embedly">
+      <HintPath>..\..\packages\embedly.0.7\lib\net40\Embedly.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -58,8 +65,12 @@
     <Reference Include="ServiceStack.Interfaces">
       <HintPath>..\..\packages\ServiceStack.Common.3.9.69\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.OrmLite">
-      <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.9.69\lib\net35\ServiceStack.OrmLite.dll</HintPath>
+    <Reference Include="ServiceStack.OrmLite, Version=3.9.69.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\ServiceStack.OrmLite.Sqlite64.3.9.69\lib\net40\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqliteNET">
+      <HintPath>..\..\packages\ServiceStack.OrmLite.Sqlite64.3.9.69\lib\net40\ServiceStack.OrmLite.SqliteNET.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.OrmLite.SqlServer">
       <HintPath>..\..\packages\ServiceStack.OrmLite.SqlServer.3.9.69\lib\net35\ServiceStack.OrmLite.SqlServer.dll</HintPath>
@@ -79,14 +90,21 @@
     <Reference Include="Simple.Data.Ado">
       <HintPath>..\..\packages\Simple.Data.Ado.0.18.3.1\lib\net40\Simple.Data.Ado.dll</HintPath>
     </Reference>
-    <Reference Include="Simple.Data.Sqlite">
+    <Reference Include="Simple.Data.Sqlite, Version=0.18.3.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Simple.Data.Sqlite.0.18.3.1\lib\net40\Simple.Data.Sqlite.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\..\packages\System.Data.SQLite.1.0.88.0\lib\net45\System.Data.SQLite.dll</HintPath>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SQLite, Version=1.0.88.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\System.Data.SQLite.x64.1.0.88.0\lib\net45\System.Data.SQLite.dll</HintPath>
     </Reference>
-    <Reference Include="System.Data.SQLite.Linq">
-      <HintPath>..\..\packages\System.Data.SQLite.1.0.88.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.88.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\System.Data.SQLite.x64.1.0.88.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive">
+      <HintPath>..\..\packages\Rx-Main.1.0.11226\lib\Net4\System.Reactive.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -94,22 +112,23 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebActivator">
       <HintPath>..\..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -126,16 +145,13 @@
     <Content Include="x64\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="x86\SQLite.Interop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AppHost.cs" />
     <Compile Include="App_Start\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App_Start\WebServiceExamples.cs" />
+    <Compile Include="EmbedService.cs" />
     <Compile Include="MealsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -148,6 +164,9 @@
       <Project>{c8dfe065-1a65-44f2-805c-9bbbd2245565}</Project>
       <Name>BAG.Menu.Impl</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

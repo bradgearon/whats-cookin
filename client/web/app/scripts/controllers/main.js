@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('menuApp')
-    .controller('MainCtrl', ['$scope','Menu', function ($scope, Menu) {
+    .controller('MainCtrl', ['$scope','Menu','Embed', function ($scope, Menu, Embed) {
         var menu = new Menu();
 
         $scope.menu = { date: new Date() };
@@ -10,8 +10,8 @@ angular.module('menuApp')
         $scope.isReadonly = false;
 
         $scope.hoveringOver = function (value) {
-            $scope.overStar = value;
-            $scope.percent = 100 * (value / $scope.max);
+            this.meal.overStar = value;
+            this.meal.percent = value;
         };
 
         $scope.ratingStates = [
@@ -26,8 +26,17 @@ angular.module('menuApp')
             $scope.menu.date = moment(date).add('days', interval)._d;
         };
 
+        $scope.urlChange = function(meal) {
+            Embed.get({
+                url: meal.url,
+                width: '300'
+            }, function(embed){
+               angular.extend(meal, embed);
+            });
+        };
+
         $scope.$watch('menu.date', function(date) {
-            $scope.meals = menu.getMeals(date);
+            $scope.meals = Menu.query(date);
         });
 
     }]);
