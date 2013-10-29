@@ -2,8 +2,45 @@ $icon-font-path: "../bower_components/bootstrap-sass/fonts/";
 @import "bootstrap-sass/lib/bootstrap";
 
 .media {
+  min-width: 400px;
+  position: relative;
+  padding: 10px;
+  z-index:10;
+   
+   .spinner {
+    top: 50%;
+    left: 50%;
+    position: absolute !important;
+   }
+  .overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: .7;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
   img {
     margin: auto;
     text-align: center;
   }
+  .rating i, .media-date {
+    font-size: ceil($font-size-base * 1.2);
+  }
+  .media-body .label {
+    vertical-align: super;
+    font-size: $font-size-base;
+  }
+  .media-url {
+    font-size: ceil($font-size-base * 1.2);
+    margin: 8px 0;
+  }
+  .media-title { 
+    font-size: ceil($font-size-base * 1.4);
+    margin-top: 8px;
+  }
+
+
 }

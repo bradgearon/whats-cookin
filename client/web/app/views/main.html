@@ -1,64 +1,67 @@
 <div class="row">
-    <div class="col-sm-4">
-        <h4>pick the date</h4>
-    </div>
-    <div class="col-sm-8">
-        <form class="form" role="form">
-            <div class="input-group">
-                <div class="input-group-btn">
-                    <button type="button" class="btn btn-danger" ng-click="incrementDate(menu.date, -7)">
-                        <i class="glyphicon glyphicon-chevron-left"></i> previous
-                    </button>
-                </div>
-                <input class="form-control" type="text" datepicker-popup="MM/dd/yyyy" ng-model="menu.date"
-                       is-open="opened" ng-required="true" placeholder="pick the date">
+  <div class="col-sm-4">
+    <h4>pick the date</h4>
+  </div>
+  <div class="col-sm-8">
+    <form class="form" role="form">
+      <div class="input-group">
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-danger" ng-click="incrementDate(menu.date, -7)">
+            <i class="glyphicon glyphicon-chevron-left"></i> previous
+          </button>
+        </div>
+        <input class="form-control" type="text" datepicker-popup="MM/dd/yyyy" ng-model="menu.date"
+               is-open="opened" ng-required="true" placeholder="pick the date">
 
-                <div class="input-group-btn">
-                    <button type="button" class="btn btn-danger" ng-click="incrementDate(menu.date, 7)">
-                        next <i class="glyphicon glyphicon-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-danger" ng-click="incrementDate(menu.date, 7)">
+            next <i class="glyphicon glyphicon-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
-<hr/>
+<hr />
 
 <div class="media" ng-repeat="meal in meals">
-    <div class="col-lg-3 col-md-4 col-sm-5">
-        <a href="#">
-            <img ng-show="meal.thumbnail" ng-src="{{meal.thumbnail}}" class="glyphicon-align-center img-responsive"/>
-            <img ng-hide="$parent.meal.thumbnail" ph-img="300x150" class="img-responsive"/>
-        </a>
-    </div>
-    <hr class="hidden-sm hidden-lg hidden-md">
-    <div class="col-lg-9 col-md-8 col-sm-7">
-        <div class="media-body">
-        <span class="small media-date">
-            {{meal.date | moment: 'ddd, MMM Do'}}
-        </span>
-
-            <div class="pull-right">
-             <span class="label"
-                   ng-class="{'label-warning': meal.percent<=3, 'label-info': meal.percent>3 && meal.percent<7, 'label-success': meal.percent>=7}"
-                   ng-show="meal.overStar && !isReadonly">
-                {{meal.percent}}
-            </span>&nbsp;
-                <div rating value="meal.rating" max="max" readonly="isReadonly"
-                     on-hover="hoveringOver(value)" on-leave="meal.overStar = null">
-                </div>
-            </div>
-            <br/>
-            <a href="#" editable-text="meal.title">{{ meal.title || 'enter the title' }}</a>
-            <br/>
-            <div class="media-url">
-                <a ng-href="{{meal.url}}" ng-show="meal.url"><i class="glyphicon glyphicon-link"></i></a>
-                <a onaftersave="urlChange(meal)" editable-url="meal.url">{{ meal.url || 'the url' }}</a>
-            </div>
-            <p ng-show="meal.description">
-                {{meal.description}}
-            </p>
+  <div class="overlay" ng-show="meal.wait">
+    <div spin spin-opts="spin" spin-when="meal.wait"></div>
+  </div>
+  <div class="col-lg-3 col-md-4 col-sm-5">
+    <a href="#">
+      <img ng-show="meal.thumbnail" ng-src="{{meal.thumbnail}}" class="glyphicon-align-center img-responsive" />
+      <img ng-hide="$parent.meal.thumbnail" ph-img="300x150" class="img-responsive" />
+    </a>
+  </div>
+  <hr class="hidden-sm hidden-lg hidden-md">
+  <div class="col-lg-9 col-md-8 col-sm-7">
+    <div class="media-body">
+      <span class="media-date">
+        <strong>{{meal.date | moment: 'ddd, MMM Do'}}</strong>
+      </span>
+      <div class="pull-right">
+        <span class="label"
+              ng-class="{'label-warning': meal.percent<=3, 'label-info': meal.percent>3 && meal.percent<7, 'label-success': meal.percent>=7}"
+              ng-show="meal.rating || (meal.overStar && !isReadonly)">
+          {{meal.percent}}
+        </span>&nbsp;
+        <div class="rating" rating value="meal.rating" max="max" readonly="isReadonly"
+             on-hover="hoveringOver(value)" on-leave="meal.overStar = null">
         </div>
+      </div>
+      <br />
+      <div class="media-title">
+        <a href="#" editable-text="meal.title">{{ meal.title || 'enter the title' }}</a>
+      </div>
+      <div class="media-url">
+        <a ng-href="{{meal.url}}" ng-show="meal.url"><i class="glyphicon glyphicon-link"></i></a>
+        <a onaftersave="urlChange(meal)" editable-url="meal.url">{{ meal.url || 'the url' }}</a>
+      </div>
+      <p ng-show="meal.description">
+        {{meal.description}}
+      </p>
     </div>
-    <hr>
+  </div>
+  <hr>
 </div>
