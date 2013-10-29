@@ -8,7 +8,7 @@ angular.module('menuApp.services.menu', ['ngResource'])
           };
           var actions = {};
           var intervalDuration = 15;
-          var menu = $resource('http://menu.api.locl/meal', defaults, actions);
+          var menu = $resource('http://api.' + window.location.hostname +  '/meal', defaults, actions);
 
           menu.prototype.getMeals = function (date) {
             var meals = [];
