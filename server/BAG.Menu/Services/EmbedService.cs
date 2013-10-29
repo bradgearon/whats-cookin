@@ -1,6 +1,6 @@
-﻿using BAG.Menu.Core;
-using BAG.Menu.Core.Interface;
-using BAG.Menu.Impl;
+﻿using BAG.Cookin.Core;
+using BAG.Cookin.Core.Interface;
+using BAG.Cookin.Impl;
 using ServiceStack.DataAnnotations;
 using ServiceStack.OrmLite;
 using ServiceStack.ServiceHost;
@@ -9,10 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BAG.Menu.Core.Model;
+using BAG.Cookin.Core.Model;
 using ServiceStack.ServiceInterface;
 
-namespace BAG.Menu
+namespace BAG.Cookin.Web
 {
 
   [Route("/embed")]

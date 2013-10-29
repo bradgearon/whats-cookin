@@ -1,5 +1,5 @@
-﻿using BAG.Menu.Core;
-using BAG.Menu.Core.Interface;
+﻿using BAG.Cookin.Core;
+using BAG.Cookin.Core.Interface;
 using Embedly;
 using System;
 using System.Collections.Generic;
@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Embedly.OEmbed;
 using System.Diagnostics;
-using BAG.Menu.Core.Model;
-namespace BAG.Menu.Impl
+using BAG.Cookin.Core.Model;
+namespace BAG.Cookin.Impl
 {
   public class EmbedlyClient : IEmbedlyClient
   {

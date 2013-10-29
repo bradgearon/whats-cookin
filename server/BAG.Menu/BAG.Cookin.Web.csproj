@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BAG.Menu</RootNamespace>
-    <AssemblyName>BAG.Menu</AssemblyName>
+    <RootNamespace>BAG.Menu.Web</RootNamespace>
+    <AssemblyName>BAG.Menu.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
@@ -84,6 +84,13 @@
       <HintPath>..\..\packages\ServiceStack.Text.3.9.56\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SQLite, Version=1.0.89.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\System.Data.SQLite.1.0.89.0\lib\net45\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\..\packages\System.Data.SQLite.1.0.89.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Reactive">
       <HintPath>..\..\packages\Rx-Main.1.0.11226\lib\Net4\System.Reactive.dll</HintPath>
     </Reference>
@@ -105,6 +112,12 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="x64\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -128,13 +141,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BAG.Menu.Core\BAG.Menu.Core.csproj">
+    <ProjectReference Include="..\BAG.Menu.Core\BAG.Cookin.Core.csproj">
       <Project>{3f2e13f2-d1ec-4480-b7f4-24894d398675}</Project>
-      <Name>BAG.Menu.Core</Name>
+      <Name>BAG.Cookin.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BAG.Menu.Impl\BAG.Menu.Impl.csproj">
+    <ProjectReference Include="..\BAG.Menu.Impl\BAG.Cookin.Impl.csproj">
       <Project>{c8dfe065-1a65-44f2-805c-9bbbd2245565}</Project>
-      <Name>BAG.Menu.Impl</Name>
+      <Name>BAG.Cookin.Impl</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

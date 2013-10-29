@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BAG.Menu.Core.Model
+namespace BAG.Cookin.Core.Model
 {
   public class Embed
   {

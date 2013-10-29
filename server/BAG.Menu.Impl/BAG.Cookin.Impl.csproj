@@ -7,8 +7,8 @@
     <ProjectGuid>{C8DFE065-1A65-44F2-805C-9BBBD2245565}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BAG.Menu.Impl</RootNamespace>
-    <AssemblyName>BAG.Menu.Impl</AssemblyName>
+    <RootNamespace>BAG.Cookin.Impl</RootNamespace>
+    <AssemblyName>BAG.Cookin.Impl</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -79,9 +79,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BAG.Menu.Core\BAG.Menu.Core.csproj">
+    <ProjectReference Include="..\BAG.Menu.Core\BAG.Cookin.Core.csproj">
       <Project>{3f2e13f2-d1ec-4480-b7f4-24894d398675}</Project>
-      <Name>BAG.Menu.Core</Name>
+      <Name>BAG.Cookin.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

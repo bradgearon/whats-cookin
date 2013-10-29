@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAG.Menu", "server\BAG.Menu\BAG.Menu.csproj", "{C8305AB0-7724-4C2A-B1F0-15E578CA7724}"
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20827.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAG.Cookin.Web", "server\BAG.Menu\BAG.Cookin.Web.csproj", "{C8305AB0-7724-4C2A-B1F0-15E578CA7724}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAG.Menu.Core", "server\BAG.Menu.Core\BAG.Menu.Core.csproj", "{3F2E13F2-D1EC-4480-B7F4-24894D398675}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAG.Cookin.Core", "server\BAG.Menu.Core\BAG.Cookin.Core.csproj", "{3F2E13F2-D1EC-4480-B7F4-24894D398675}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAG.Menu.Impl", "server\BAG.Menu.Impl\BAG.Menu.Impl.csproj", "{C8DFE065-1A65-44F2-805C-9BBBD2245565}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAG.Cookin.Impl", "server\BAG.Menu.Impl\BAG.Cookin.Impl.csproj", "{C8DFE065-1A65-44F2-805C-9BBBD2245565}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C9D59B25-9B4B-4D83-ACE4-B13E4A414870}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C9D59B
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web", "client\web\", "{E8F39D55-A3F9-4EF0-92FF-83DE98FFFF8C}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web(1)", "client\web\", "{E8F39D55-A3F9-4EF0-92FF-83DE98FFFF8C}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
 		Debug.AspNetCompiler.VirtualPath = "/web"
@@ -32,6 +34,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web", "client\web\", "{E8F3
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "5822"
+		SlnRelativePath = "client\web\"
 	EndProjectSection
 EndProject
 Global

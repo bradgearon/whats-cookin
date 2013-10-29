@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BAG.Menu.Core.Interface
+namespace BAG.Cookin.Core.Interface
 {
   public interface IDatabaseProvider
   {

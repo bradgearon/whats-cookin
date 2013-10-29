@@ -14,13 +14,13 @@ using ServiceStack.ServiceInterface.ServiceModel;
 using ServiceStack.Text;
 using ServiceStack.WebHost.Endpoints;
 using ServiceStack.WebHost.Endpoints.Extensions;
-using BAG.Menu.Core.Interface;
-using BAG.Menu.Impl;
 using ServiceStack.ServiceInterface.Cors;
-using BAG.Menu.Core;
-using BAG.Menu.Core.Model;
+using BAG.Cookin.Impl;
+using BAG.Cookin.Core;
+using BAG.Cookin.Core.Model;
+using BAG.Cookin.Core.Interface;
 
-namespace BAG.Menu.App_Start
+namespace BAG.Cookin.Web.App_Start
 {
   public class AppHost : AppHostBase
   {

@@ -7,8 +7,8 @@
     <ProjectGuid>{3F2E13F2-D1EC-4480-B7F4-24894D398675}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BAG.Menu.Core</RootNamespace>
-    <AssemblyName>BAG.Menu.Core</AssemblyName>
+    <RootNamespace>BAG.Cookin.Core</RootNamespace>
+    <AssemblyName>BAG.Cookin.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

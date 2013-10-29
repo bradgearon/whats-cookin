@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="BAG.Menu.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="BAG.Cookin.Web.Global" Language="C#" %>
