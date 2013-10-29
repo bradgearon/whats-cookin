@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Embedly.OEmbed;
 using System.Diagnostics;
-
+using BAG.Menu.Core.Model;
 namespace BAG.Menu.Impl
 {
   public class EmbedlyClient : IEmbedlyClient

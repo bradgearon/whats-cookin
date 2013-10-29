@@ -14,30 +14,25 @@ using ServiceStack.ServiceInterface.ServiceModel;
 using ServiceStack.Text;
 using ServiceStack.WebHost.Endpoints;
 using ServiceStack.WebHost.Endpoints.Extensions;
-using Simple.Data;
 using BAG.Menu.Core.Interface;
 using BAG.Menu.Impl;
 using ServiceStack.ServiceInterface.Cors;
 using BAG.Menu.Core;
-
-[assembly: WebActivator.PreApplicationStartMethod(typeof(BAG.Menu.App_Start.AppHost), "Start")]
+using BAG.Menu.Core.Model;
 
 namespace BAG.Menu.App_Start
 {
   public class AppHost : AppHostBase
   {
-    public AppHost() :
-      base("StarterTemplate ASP.NET Host", typeof(EmbedService).Assembly) { }
+    public AppHost() : base("StarterTemplate ASP.NET Host", typeof(EmbedService).Assembly) { }
 
     public override void Configure(Funq.Container container)
     {
-      //Set JSON web services to return idiomatic JSON camelCase properties
       ServiceStack.Text.JsConfig.EmitCamelCaseNames = true;
 
       Plugins.Add(new CorsFeature());
       this.PreRequestFilters.Add((httpReq, httpRes) =>
       {
-        //Handles Request and closes Responses after emitting global HTTP Headers
         if (httpReq.HttpMethod == "OPTIONS")
         {
           httpRes.AddHeader("Access-Control-Allow-Methods", "PUT, DELETE, POST, GET, OPTIONS");
@@ -46,37 +41,28 @@ namespace BAG.Menu.App_Start
         }
       });
 
-      //Uncomment to change the default ServiceStack configuration
-      SetConfig(new EndpointHostConfig
-      {
-        DefaultContentType = "application/json"
-      });
-
-      //Enable Authentication
-      ConfigureAuth(container);
-
       var embedKey = ConfigurationManager.AppSettings["EmbedKey"];
-      container.Register<IEmbedlyClient>(new EmbedlyClient(embedKey));
-
-
-      //Requires ConnectionString configured in Web.Config
       var connectionString = ConfigurationManager.AppSettings["AppDbPath"].MapAbsolutePath();
 
+      var dialectProvider = new SqliteOrmLiteDialectProvider();
+      var dbFactory = new OrmLiteConnectionFactory(connectionString, dialectProvider);
 
-
-      container.Register<IDatabaseProvider>(c =>
+      container.Register<IEmbedlyClient>(new EmbedlyClient(embedKey));
+      container.Register<IDbConnectionFactory>(dbFactory);
+      
+      dbFactory.Run(db =>
       {
-        var provider = new SimpleDatabaseProvider(connectionString);
-        var dbFactory = new OrmLiteConnectionFactory(connectionString, new SqliteOrmLiteDialectProvider());
-        dbFactory.Run(db =>
+        if (!db.TableExists("Menu"))
         {
-          var modelTypes = typeof(Meal).Assembly.GetTypes().Where(t => t.Namespace.Contains("Model"));
-          db.CreateTables(false, modelTypes.ToArray());
+          var modelTypes = typeof(Meal).Assembly.GetTypes()
+            .Where(t => t.Namespace.Contains("Model"));
 
-          var menu = db.GetByIdOrDefault<Core.Menu>(1);
+          db.CreateTables(true, modelTypes.ToArray());
+
+          var menu = db.GetByIdOrDefault<Core.Model.Menu>(1);
           if (menu == null)
           {
-            menu = new Core.Menu();
+            menu = new Core.Model.Menu();
             db.Insert(menu);
           }
 
@@ -108,39 +94,15 @@ namespace BAG.Menu.App_Start
 
           db.InsertAll(newMeals);
           db.UpdateAll(existingMeals);
-
-        });
-
-        return provider;
+        }
       });
-
-      
-
-
-    }
-
-    private void ConfigureAuth(Funq.Container container)
-    {
-      var appSettings = new AppSettings();
-
-      //Default route: /auth/{provider}
-      Plugins.Add(new AuthFeature(() => new CustomUserSession(),
-        new IAuthProvider[] {
-          new CredentialsAuthProvider(appSettings), 
-          new FacebookAuthProvider(appSettings), 
-          new TwitterAuthProvider(appSettings), 
-          new BasicAuthProvider(appSettings), 
-        }));
-
-
-      Plugins.Add(new RegistrationFeature());
-      Plugins.Add(new CorsFeature());
-
     }
 
     public static void Start()
     {
       new AppHost().Init();
+
+
     }
   }
 }

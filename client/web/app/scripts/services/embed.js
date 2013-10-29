@@ -8,6 +8,9 @@ angular.module('menuApp.services.embed', ['ngResource'])
           };
           var actions = {};
 
-          var embed = $resource('http://menu.api.locl/embed', defaults, actions);
+
+          var embed = $resource('', defaults, actions);
+
+          //var embed = $resource('http://api.' + window.location.hostname + '/embed', defaults, actions);
           return embed;
         }]);

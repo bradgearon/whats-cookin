@@ -2,7 +2,6 @@ $icon-font-path: "../bower_components/bootstrap-sass/fonts/";
 @import "bootstrap-sass/lib/bootstrap";
 
 .media {
-  min-width: 400px;
   position: relative;
   padding: 10px;
   z-index:10;
@@ -12,6 +11,7 @@ $icon-font-path: "../bower_components/bootstrap-sass/fonts/";
     left: 50%;
     position: absolute !important;
    }
+
   .overlay {
     position: absolute;
     height: 100%;
