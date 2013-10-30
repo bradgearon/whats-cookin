@@ -36,4 +36,11 @@ to run:
 
 Note:  
 This was a quick project to replace a previous version.  The code is not perfect.
+
+Medium
+![](https://raw.github.com/bradgearon/resources/master/whatscookin/top.png)
+
+Small
+![](https://raw.github.com/bradgearon/resources/master/whatscookin/small.png)
+
 	
