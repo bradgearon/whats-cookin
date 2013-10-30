@@ -29,7 +29,8 @@ namespace BAG.Cookin.Web.App_Start
 
     public override void Configure(Funq.Container container)
     {
-      ServiceStack.Text.JsConfig.EmitCamelCaseNames = true;
+      JsConfig.EmitCamelCaseNames = true;
+      JsConfig.DateHandler = JsonDateHandler.ISO8601;
 
       Plugins.Add(new CorsFeature());
       this.PreRequestFilters.Add((httpReq, httpRes) =>
@@ -66,8 +67,8 @@ namespace BAG.Cookin.Web.App_Start
           if (menu == null)
           {
             menu = new Menu();
-            menu.intervalStart = DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek);
-            menu.intervalEnd = DateTime.Now;
+            menu.intervalStart = DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek).Date;
+            menu.intervalEnd = DateTime.Now.Date;
 
             db.Insert(menu);
           }
@@ -89,7 +90,7 @@ namespace BAG.Cookin.Web.App_Start
             }
 
             meal.menuId = menu.id;
-            meal.date = DateTime.Now.AddDays(-Interval + i);
+            meal.date = DateTime.Now.AddDays(-Interval + i).Date;
             meal.title = "test meal " + i;
             meal.url = "http://localhost/meal/" + i;
           }

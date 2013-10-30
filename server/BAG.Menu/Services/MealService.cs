@@ -29,7 +29,7 @@ namespace BAG.Cookin.Web
     {
       var interval = ((AppHost) AppHost.Instance).Interval;
       var menuExp = Db.CreateExpression<Menu>();
-      var date = request.date ?? DateTime.Now;
+      var date = request.date.HasValue ? request.date.Value.Date : DateTime.Now.Date;
       menuExp.Where(m => date >= m.intervalStart && date <= m.intervalEnd);
 
       var menu = Db.FirstOrDefault(menuExp);
@@ -44,36 +44,40 @@ namespace BAG.Cookin.Web
         if (menu != null)
         {
           var start = menu.intervalStart;
-          var direction = DateTime.Compare(date, start);
-          var daysBetween = Math.Abs(Math.Truncate((date - start).TotalDays));
-          var times = Math.Ceiling(daysBetween / interval);
+          double direction = DateTime.Compare(date, start);
+          double daysBetween = Math.Abs((date - start).Days);
+          int times = direction > 0 ?(int) Math.Floor(daysBetween / interval) 
+            :(int) Math.Ceiling(daysBetween / interval);
 
           menu = new Menu();
           menu.intervalStart = start.AddDays(direction * (interval * times));
-          menu.intervalEnd = menu.intervalStart.AddDays(interval);
         }
         else if (menu == null)
         {
           menu = new Menu();
           menu.intervalStart = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
-          menu.intervalEnd = menu.intervalStart.AddDays(interval + 1);
         }
 
       }
 
+      menu.intervalEnd = menu.intervalStart.AddDays(interval);
+
       // none
       var mealExp = Db.CreateExpression<Meal>();
-      mealExp.Where(m => menu.intervalEnd >= m.date && date <= menu.intervalStart);
-      var meals = Db.Select(mealExp).Take(interval);
 
-      var mealItems = from index in Enumerable.Range(0, interval)
-                      let mealDate = menu.intervalStart.AddDays(index).Date
-                      join existingMeal in meals on mealDate equals existingMeal.date.Date into spanMeals
-                      from meal in spanMeals.DefaultIfEmpty()
-                      select meal ?? new Meal
-                      {
-                        date = mealDate
-                      };
+      mealExp.Where(m => m.date >= menu.intervalStart && m.date <= menu.intervalEnd);
+      var meals = Db.Select(mealExp);
+
+      var mealItems = new List<Meal>();
+      for (int i = 0; i < interval; i++)
+      {
+        var mealDate = menu.intervalStart.AddDays(i).Date;
+        var meal = meals.FirstOrDefault(m => m.date.Date == mealDate);
+        if(meal == null) {
+          meal = new Meal{ date = mealDate };
+        }
+        mealItems.Add(meal);
+      }
       return mealItems;
     }
 

@@ -4,17 +4,22 @@ angular.module('menuApp')
     .controller('MainCtrl', ['$scope', '$routeParams', '$location', 'Menu', 'Embed',
         function ($scope, $routeParams, $location, Menu, Meal, Embed) {
             var menu = new Menu();
+
+            var dt = moment($routeParams.date) || moment(new Date());
             $scope.embedly = { key: 'ade6e90f8259426bb359440c9b8e446e' };
-            $scope.menu = { date: $routeParams.date || new Date() };
+            $scope.menu = { date: dt.toISOString() };
             $scope.rate = 7;
             $scope.max = 10;
             $scope.isReadonly = false;
 
             $scope.$watch(function () {
-                    return $location.search.date
+                    return $routeParams.date
                 },
                 function () {
-                    $scope.meals = Menu.query({ res: 'meals', date: $scope.menu.date });
+                    $scope.meals = Menu.query({ res: 'meals',
+                        date: moment($scope.menu.date).toISOString()
+
+                    });
                 });
 
             $scope.ratingOver = function (meal, value) {
@@ -38,7 +43,8 @@ angular.module('menuApp')
             ];
 
             $scope.incrementDate = function (date, interval) {
-                $scope.menu.date = moment(date).add('days', interval)._d;
+                $scope.menu.date = moment(date)
+                    .add('days', interval).format('YYYY-MM-DD');
             };
 
             $scope.spin = {
@@ -55,32 +61,31 @@ angular.module('menuApp')
 
             $scope.updateMeal = function (meal) {
                 meal.wait.push(1);
-                Menu.save({ res: 'meal' }, meal, function(result){
+                Menu.save({ res: 'meal' }, meal, function (result) {
                     meal.wait.pop();
                     angular.extend(meal, result);
-
                 });
             };
 
             $scope.urlChange = function (meal) {
-                meal.wait.push(1);
                 $scope.updateMeal(meal);
 
+                meal.wait.push(1);
                 $.when($.embedly.oembed(meal.url, $scope.embedly))
                     .then(function (results) {
-                        meal.wait.pop();
-
                         if (results && results.length > 0) {
                             delete results[0].id;
-                            angular.extend(meal, results[0]);
+                            meal = angular.extend(meal, results[0]);
                             $scope.$apply();
                             $scope.updateMeal(meal);
+                            meal.wait.pop();
                         }
                     });
             };
 
             $scope.$watch('menu.date', function (date) {
-                var formDate = moment(date).format('YYYY-MM-DD');
+                var formDate = moment(date)
+                    .format('YYYY-MM-DD');
                 $location.search({date: formDate});
             });
 

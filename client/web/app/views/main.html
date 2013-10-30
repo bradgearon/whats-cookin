@@ -10,7 +10,8 @@
                         <i class="glyphicon glyphicon-chevron-left"></i>previous
                     </button>
                 </div>
-                <input class="form-control" type="text" datepicker-popup="MM/dd/yyyy" ng-model="menu.date"
+                <input class="form-control" type="date"  datepicker-popup="yyyy-MM-dd"
+                       ng-model="menu.date" on-change="setDate(menu.date)"
                        is-open="opened" ng-required="true" placeholder="pick the date">
 
                 <div class="input-group-btn">
