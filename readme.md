@@ -8,29 +8,32 @@ Responsive almost to 300px wide (for those who get hungry and want to know whats
 npm install && bower install 
 ```
 to run locally with auto reload (point your front-end to  /client/web/app):
+
 ```bash
 grunt server
 ```
 to build (point your front-end to /client/web/dist):
+
 ```bash
 grunt build
 ```
 
 client/
-Yeoman
-Node / Grunt / bower for client builds / deps
-Bootstrap 3
-AngularJs
-Various angular modules (angular-bootstrap / ui)
+
++Yeoman
++Node / Grunt / bower for client builds / deps
++Bootstrap 3
++AngularJs
++Various angular modules (angular-bootstrap / ui)
 
 server/
-ServiceStack (nipples)
-ServiceStack.Ormlite (ORM) / Funq (IOC)
-Sqlite (storing the things)
++ServiceStack (nipples)
++ServiceStack.Ormlite (ORM) / Funq (IOC)
++Sqlite (storing the things)
 
 to run:
-spawn the server in iis / or mono
-from /client/web in your favorite terminal:
++spawn the server in iis / or mono
++from /client/web in your favorite terminal:
 
 Note:  
 This was a quick project to replace a previous version.  The code is not perfect.
