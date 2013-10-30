@@ -33,7 +33,7 @@
         <a href="#">
             <img ng-show="meal.thumbnail_url" ng-src="{{meal.thumbnail_url}}"
                  class="glyphicon-align-center img-responsive"
-                 ng-class="{'eaten': $parent.meal.eaten}"/>
+                 ng-class="{'eaten': meal.eaten}"/>
             <img ng-hide="$parent.meal.thumbnail_url || $parent.meal.images" ph-img="300x150" class="img-responsive"
                  ng-class="{'eaten': $parent.meal.eaten}"/>
         </a>
