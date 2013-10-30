@@ -24,6 +24,7 @@ namespace BAG.Cookin.Web.App_Start
 {
   public class AppHost : AppHostBase
   {
+    public int Interval { get; set; }
     public AppHost() : base("StarterTemplate ASP.NET Host", typeof(EmbedService).Assembly) { }
 
     public override void Configure(Funq.Container container)
@@ -43,6 +44,7 @@ namespace BAG.Cookin.Web.App_Start
 
       var embedKey = ConfigurationManager.AppSettings["EmbedKey"];
       var connectionString = ConfigurationManager.AppSettings["AppDbPath"].MapAbsolutePath();
+      Interval = int.Parse(ConfigurationManager.AppSettings["Interval"]);
 
       var dialectProvider = new SqliteOrmLiteDialectProvider();
       var dbFactory = new OrmLiteConnectionFactory(connectionString, dialectProvider);
@@ -57,23 +59,23 @@ namespace BAG.Cookin.Web.App_Start
           var modelTypes = typeof(Meal).Assembly.GetTypes()
             .Where(t => t.Namespace.Contains("Model"));
 
-          db.CreateTables(true, modelTypes.ToArray());
+          db.DropAndCreateTables(modelTypes.ToArray());
 
-          var menu = db.GetByIdOrDefault<Core.Model.Menu>(1);
+          var exp = db.CreateExpression<Menu>();
+          var menu = db.FirstOrDefault(exp);
           if (menu == null)
           {
-            menu = new Core.Model.Menu();
+            menu = new Menu();
+            menu.intervalStart = DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek);
+            menu.intervalEnd = DateTime.Now;
+
             db.Insert(menu);
           }
-
-          menu.intervalStart = DateTime.Now.AddDays(-15);
-          menu.intervalEnd = DateTime.Now;
-          db.Update(menu);
 
           var newMeals = new List<Meal>();
           var existingMeals = new List<Meal>();
 
-          for (int i = 0; i < 15; i++)
+          for (int i = 0; i < Interval; i++)
           {
             var meal = db.GetByIdOrDefault<Meal>(i + 1);
             if (meal == null)
@@ -87,7 +89,7 @@ namespace BAG.Cookin.Web.App_Start
             }
 
             meal.menuId = menu.id;
-            meal.date = DateTime.Now.AddDays(-15 + i);
+            meal.date = DateTime.Now.AddDays(-Interval + i);
             meal.title = "test meal " + i;
             meal.url = "http://localhost/meal/" + i;
           }

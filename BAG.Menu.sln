@@ -16,27 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C9D59B
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web(1)", "client\web\", "{E8F39D55-A3F9-4EF0-92FF-83DE98FFFF8C}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
-		Debug.AspNetCompiler.VirtualPath = "/web"
-		Debug.AspNetCompiler.PhysicalPath = "client\web\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\web\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/web"
-		Release.AspNetCompiler.PhysicalPath = "client\web\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\web\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "5822"
-		SlnRelativePath = "client\web\"
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,10 +34,6 @@ Global
 		{C8DFE065-1A65-44F2-805C-9BBBD2245565}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8DFE065-1A65-44F2-805C-9BBBD2245565}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8DFE065-1A65-44F2-805C-9BBBD2245565}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8F39D55-A3F9-4EF0-92FF-83DE98FFFF8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8F39D55-A3F9-4EF0-92FF-83DE98FFFF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8F39D55-A3F9-4EF0-92FF-83DE98FFFF8C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8F39D55-A3F9-4EF0-92FF-83DE98FFFF8C}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

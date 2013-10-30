@@ -5,7 +5,10 @@ $icon-font-path: "../bower_components/bootstrap-sass/fonts/";
   position: relative;
   padding: 10px;
   z-index:10;
-   
+
+  .eaten {
+    border-left: solid 5px $btn-success-bg;
+  }
    .spinner {
     top: 50%;
     left: 50%;

@@ -15,28 +15,28 @@ namespace BAG.Cookin.Web
 {
 
   [Route("/menus")]
-  public class MenusRequest : IReturn<IEnumerable<Core.Model.Menu>>
+  public class MenusRequest : IReturn<IEnumerable<Menu>>
   {
 
   }
 
   public class MenuService : Service
   {
-    public IEnumerable<Core.Model.Menu> Get(MenusRequest request)
+    public IEnumerable<Menu> Get(MenusRequest request)
     {
-      var menus = Db.Select<Core.Model.Menu>();
+      var menus = Db.Select<Menu>();
       return menus;
     }
 
-    public void Post(Core.Model.Menu request)
+    public void Post(Menu request)
     {
       if (request.id > 0)
       {
-        Db.Update<Core.Model.Menu>(request);
+        Db.Update<Menu>(request);
       }
       else
       {
-        Db.Insert<Core.Model.Menu>(request);
+        Db.Insert<Menu>(request);
       }
 
     }

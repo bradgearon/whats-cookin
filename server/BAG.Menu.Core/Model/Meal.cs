@@ -1,4 +1,5 @@
-﻿using ServiceStack.DataAnnotations;
+﻿using System.ComponentModel;
+using ServiceStack.DataAnnotations;
 using ServiceStack.OrmLite;
 using ServiceStack.ServiceHost;
 using System;
@@ -20,6 +21,7 @@ namespace BAG.Cookin.Core.Model
     public string rating { get; set; }
     public string thumbnail_url { get; set; }
     public string description { get; set; }
+    public bool eaten { get; set; }
 
     [ForeignKey(typeof(Menu))]
     public int menuId { get; set; }
